@@ -1,0 +1,40 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "React Review App",
+  "main": "server.js",
+  "scripts": {
+    "prestart": "sequelize db:migrate --config config/index.js && sequelize db:seed:all --config config/index.js",
+    "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
+    "start:prod": "node server.js",
+    "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "install": "cd client && yarn install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^3.5.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "bcrypt-nodejs": "^0.0.3",
+    "body-parser": "^1.18.2",
+    "express": "^4.15.4",
+    "express-session": "^1.15.6",
+    "if-env": "^1.0.4",
+    "morgan": "^1.9.0",
+    "mysql2": "^1.5.1",
+    "passport": "^0.4.0",
+    "passport-facebook": "^2.1.1",
+    "passport-local": "^1.0.0",
+    "pg": "~6.4.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.31.0",
+    "sequelize-cli": "^3.2.0",
+    "socket.io": "^2.0.4",
+    "uuid": "^3.1.0"
+  }
+}
